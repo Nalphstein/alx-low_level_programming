@@ -21,9 +21,9 @@ int main(void)
 
 		if (m < j && j < k)
 		{
+			putchar(m + '0');
 			putchar(j + '0');
 			putchar(k + '0');
-			putchar(l + '0');
 
 		if (i < 700)
 		{
@@ -35,3 +35,4 @@ int main(void)
 	putchar('\n');
 
 	return (0);
+}

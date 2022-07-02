@@ -15,13 +15,13 @@ int main(void)
 	{
 		for (d = 0; d <= 9; d++)
 		{
-			putchar(tens + '0');
-			putchar(ones + '0');
-			if (!(tens == 9 && ones == 9)
-					{
-					putchar(',');
-					putchar(' ');
-					}
+			putchar(i + '0');
+			putchar(d + '0');
+			if (!(i == 9 && d == 9))
+			{
+				putchar(',');
+				putchar(' ');
+			}
 		}
 	}
 	putchar('\n');
