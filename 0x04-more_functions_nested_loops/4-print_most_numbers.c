@@ -7,7 +7,7 @@
 
 void print_most_numbers(void)
 {
-	char c;
+	int c;
 
 	c = 0;
 
