@@ -7,28 +7,39 @@
 
 void print_number(int n)
 {
-	int divide, nth, size = 1, power = n % 10;
+	long k;
+	int i; 
+	long num; 
 
-	n /= 10;
-	divide = n;
-	if (power < 0)
+	num = n;
+	
+	if (num < 0)
 	{
-		power *= -1, divide *= -1, n *= -1;
+		num *= -1;
 		_putchar('-');
 	}
-	if (divide > 0)
+
+	k = 1;
+	i = 1;
+	while (i)
 	{
-		while (divide / 10 != 0)
+		if (num / (k * 10) > 0)
+			k *= 10;
+		else
+			i = 0;
+	}
+
+	while (num >= 0)
+	{
+		if (k == 1)
 		{
-			divide /= 10, size *= 10;
+			_putchar(num % 10 + '0');
+			num = -1;
 		}
-		while (size > 0)
+		else
 		{
-			nth = n / size;
-			_putchar('0' + nth);
-			n -= nth * size;
-			size /= 10;
+			_putchar((num / k % 10) + '0');
+			k /= 10;
 		}
 	}
-	_putchar('0' + power);
 }
