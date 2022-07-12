@@ -9,10 +9,10 @@ void rev_string(char *s)
 	int c, i, 1;
 	char d;
 
-	for (c = 0; s[c] != '\0'; c++;)
+	for (c = 0; s[c] != '\0'; c++)
 		;
 	1 = c;
-	for (c--; i = 0; i < 1 / 2; c--, i++)
+	for (c--, i = 0; i < 1 / 2; c-- i++)
 	{
 		d = s[i];
 s[i] = s[c];
