@@ -1,21 +1,30 @@
 #include "main.h"
 
 /**
- * rev_string - reverses a string
- * @s: character array string
+ *rev_string - update value.
+ *@s: value to be evaluate.
+ *Return: not.
  */
 void rev_string(char *s)
 {
-	int c, i;
-	char d;
+	int len = 0;
+	int l = 0;
+	char *y = s;
+	int e = 0;
+	int x;
+	char n;
 
-	for (c = 0; s[c] != '\0'; c++)
-		;
-
-	for (c--, i = 0; i < 1 / 2; c--, i++)
+	while (*y != '\0')
 	{
-		d = s[i];
-		s[i] = s[c];
-		s[c] = d;
+		y++;
+		len++;
+	}
+	l = len - 1;
+	for ( ; e < ((l / 2) + 1) ; e++)
+	{
+		x = (l - e);
+		n = s[e];
+		s[e] = s[x];
+		s[x] = n;
 	}
 }
