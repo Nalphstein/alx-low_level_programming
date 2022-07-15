@@ -1,26 +1,33 @@
 #include "main.h"
 
 /**
- * rot13 - rotates  a string
- * @p: string
- * Return: string (success)
+ * rot13 - replace some letters with numbers in a string
+ * @s: a string
+ * changes a to $, e to 3, o to 0, t to 7, l to 1
+ * Return: pointer to s
  */
 char *rot13(char *s)
 {
-	int i, j;
-	char a[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char b[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	for (i = 0; s[i] != '\0'; i++)
+	int i, j, n;
+
+	char letters[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+	n = 52;
+	i = 0;
+	while (s[i] != '\0')
 	{
-		for (j = 0; a[j] != '\0'; j++)
+		j = 0;
+		while (j < n)
 		{
-			if (s[i] == a[j])
+			if (letters[j] == s[i])
 			{
-				s[i] = b[j];
-				break;
+				s[i] = letters[(j + 13) % 26 + (j / 26) * 26];
+				j = n;
 			}
+			j++;
 		}
+		i++;
 	}
 	return (s);
 }

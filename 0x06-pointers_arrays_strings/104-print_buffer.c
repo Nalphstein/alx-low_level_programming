@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * _min - get minimum
@@ -64,4 +65,5 @@ void print_buffer(char *b, int size)
 		printf("\n");
 		i += 10;
 	}
+	return (res)
 }
