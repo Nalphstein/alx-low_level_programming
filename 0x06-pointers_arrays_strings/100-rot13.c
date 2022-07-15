@@ -5,7 +5,7 @@
  * @p: string
  * Return: string (success)
  */
-char *rot13(char *p)
+char *rot13(char *s)
 {
 	int i, j;
 	char a[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -22,5 +22,5 @@ char *rot13(char *p)
 			}
 		}
 	}
-	return (p);
+	return (s);
 }
