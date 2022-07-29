@@ -1,57 +1,30 @@
 #include "main.h"
 #include <stdlib.h>
-#include <stdio.h>
+#include <stdlib.h>
 
 /**
- * _strlen - size of string
- * @s: string to evaluate
- * Return: nb of elements in s
+ * _calloc - allocates memory for an array, initializes values to 0
+ * @nmemb: number of elements
+ * @size: size of each element
+ * Return: pointer to array if success, or NULL
  */
-int _strlen(char *s)
+void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	int i;
-
-	i = 0;
-	while (*(s + i) != '\0')
-		i++;
-	return (i);
-}
-
-
-/**
- * string_nconcat - concatenate 2 strings
- * @s1: first string
- * @s2: string to add to first
- * @n: number of bytes in s2 to add to s1
- * Return: pointer to new char
- */
-char *string_nconcat(char *s1, char *s2, unsigned int n)
-{
+	unsigned int i;
+	void *p;
 	char *s;
-	unsigned int l1, l2, i, min;
 
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
-
-	l1 = _strlen(s1);
-	l2 = _strlen(s2);
-
-	min = (l2 > n) ? n : l2;
-	s = malloc(sizeof(*s) * (l1 + min + 1));
-	if (s == NULL)
+	if (nmemb == 0 || size == 0)
 		return (NULL);
 
+	p = malloc(size * nmemb);
+	if (p == NULL)
+		return (NULL);
+	s = p;
 	i = 0;
-	while (i < l1)
-	{
-		*(s + i) = *(s1 + i);
-		i++;
-	}
-	while (i < (l1 + min))
-		*(s + i++) = *s2++;
+	while (i < nmemb)
+		*(s + i++) = 0;
 
-	*(s + i) = '\0';
-	return (s);
+	return (p);
 }
+
