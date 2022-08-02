@@ -1,79 +1,75 @@
 #include "dog.h"
 #include <stdlib.h>
-
+char *_strcpy(char *src);
+int _strlen(char *s);
 /**
- * _strlen - I cannot use strlen()
- * @s: string
- * Return: return size of string
- */
-int _strlen(char *s)
-{
-	int i;
-
-	i = 0;
-
-	while (*(s + i) != '\0')
-		i++;
-	return (i);
-}
-
-
-/**
- * _strdup - returns a pointer to a newly allocated space in memory
- * @str: string to copy to new space in memory
- * returns a pointer to a newly allocated space in memory, which contains
- * a copy of the string given as a parameter.
- * Return: a pointer to the duplicated string. NULL if insufficient memory
- */
-char *_strdup(char *str)
-{
-	int l, i;
-	char *s;
-
-	if (str == NULL)
-		return (NULL);
-	l = _strlen(str);
-	s = malloc((l + 1) * sizeof(char));
-	if (s == NULL)
-		return (NULL);
-
-	i = 0;
-	while (i <= l)
-	{
-		*(s + i) = *(str + i);
-		i++;
-	}
-	return (s);
-}
-
-/**
- * new_dog - create a new dog
- * @name: name of dog
- * @age: age of dog
- * @owner: parent of dog
- * Return: pointer to dog
+ * new_dog - Creates a new instance of a struct
+ * @name: A string representing the name of a dog
+ * @age: An integer representing then age of a dog
+ * @owner: A string representing the name of a dog owner
+ * Return: A pointer to dog_t struct
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *adog;
+	dog_t *d;
+	char *d_name;
+	char *d_owner;
 
-	adog = malloc(sizeof(struct dog));
-	if (adog == NULL)
+	d = malloc(sizeof(dog_t));
+	if (d == NULL)
 		return (NULL);
-
-	adog->name = _strdup(name);
-	if (adog->name == NULL)
+	d_owner = _strcpy(owner);
+	if (d_owner == NULL)
 	{
-		free(adog);
+		free(d);
 		return (NULL);
 	}
-	adog->age = age;
-	adog->owner = _strdup(owner);
-	if(adog->owner == NULL)
+	d_name = _strcpy(name);
+	if (d_name == NULL)
 	{
-		free(adog->name);
-		free(adog);
+		free(d_owner);
+		free(d);
 		return (NULL);
 	}
-	return (adog);
+	d->name = d_name;
+	d->age = age;
+	d->owner = d_owner;
+	return (d);
+}
+/**
+ * _strlen - Calculates the length of a string
+ * @s: string
+ * Descripion: Calculates the lenght of a string
+ * Return: An integer representing the lenght of a string
+ */
+int _strlen(char *s)
+{
+	int len;
+
+	for (len = 0; s[len]; len++)
+	{}
+
+	return (len);
+}
+
+/**
+ * _strcpy - create a copy of a string
+ * @src: Contains the original string
+ * Return: Gives back the copy of string
+ */
+char *_strcpy(char *src)
+{
+	int i;
+	int len;
+	char *dest;
+
+	len = _strlen(src);
+	dest = malloc(sizeof(char) * len + 1);
+	if (dest == NULL)
+		return (NULL);
+
+	for (i = 0; src[i] != '\0'; i++)
+		dest[i] = src[i];
+	dest[i] = '\0';
+	return (dest);
 }
