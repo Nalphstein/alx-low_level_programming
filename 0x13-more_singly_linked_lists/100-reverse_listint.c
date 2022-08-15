@@ -32,7 +32,8 @@ listint_t *reverse_listint(listint_t **head)
 }
 
 
-/* other solution using recursion
+/* 
+ * other solution using recursion
  * at each step I consider the node I am at and the next node
  * I call recursion on the rest of the linked list, which
  * is a linked list that starts at next.

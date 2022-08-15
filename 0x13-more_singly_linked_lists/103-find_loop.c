@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-/*http://codingfreak.blogspot.com/2012/09/detecting-loop-in-singly-linked-
+/*
+ *http://codingfreak.blogspot.com/2012/09/detecting-loop-in-singly-linked-
  *list_22.html
  *http://codingfreak.blogspot.com/2012/12/detecting-first-node-in-a-loop.html
  */
@@ -21,7 +22,8 @@ listint_t *find_listint_loop(listint_t *head)
 
 	turtle = head;
 	hare = head;
-/*assume in a non looping list, it always ends pointing to NULL
+/*
+ *assume in a non looping list, it always ends pointing to NULL
  *find a cycle
  */
 	while (turtle != NULL && hare != NULL && hare->next != NULL)
