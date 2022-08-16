@@ -1,42 +1,39 @@
 #include "lists.h"
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+
 
 /**
-* free_listint_safe - function that frees linked list
-* @h: pointer to pointer to elements of type listint_t
-* Return: the number of nodes in the list that were freed
-**/
+ * free_listint_safe - free linked list of integers, sets first element to NULL
+ * @h: pointer to pointer to first element of list
+ * Return: size of list that was freed
+ */
 size_t free_listint_safe(listint_t **h)
 {
-	size_t counter;
-	listint_t *temp;
-	adrsList *newList, *newHead;
+	size_t l;
+	listint_t *tmp;
+	list_ad *address, *check;
 
-	counter = 0;
+	l = 0;
 	if (*h == NULL)
-		return (counter);
-	newHead = newList = NULL;
-	while (*h)
+		return (l);
+
+	address = NULL;
+	while (*h != NULL && !is_in(address, (void *) *h))
 	{
-		while (newList)
+		check = add_add(&address, (void *) *h);
+/*I cannot free if something goes wrong here, do I care to check */
+		if (check == NULL)
 		{
-			if ((*newList).ptr == *h)
-			{
-				free_adrsList(newHead);
-				newHead = NULL;
-				*h = NULL;
-				return (counter);
-			}
-			newList = (*newList).next;
+			free_add(address);
+			exit(98);
 		}
-		newList = add_node(&newHead, (void *)*h);
-		temp = *h;
-		*h = (*(*h)).next;
-		free(temp);
-		counter++;
+		tmp = *h;
+		*h = (*h)->next;
+		free(tmp);
+		++l;
 	}
-	free_adrsList(newHead);
 	*h = NULL;
-	return (counter);
+	free_add(address);
+	return (l);
 }
